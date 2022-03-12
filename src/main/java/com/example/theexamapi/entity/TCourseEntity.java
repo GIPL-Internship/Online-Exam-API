@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Entity
+
 @Table(name = "t_course", schema = "the_exam_api")
 @SQLDelete(sql = "" +
         "update t_course set state = 3 where uid = ?")

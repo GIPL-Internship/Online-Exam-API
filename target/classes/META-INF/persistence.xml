@@ -12,6 +12,11 @@
         <class>com.example.theexamapi.entity.TStream</class>
         <class>com.example.theexamapi.models.TCourseEntity</class>
         <class>com.example.theexamapi.models.TDepartmentEntity</class>
+        <class>com.example.theexamapi.models.TClassEntity</class>
+        <class>com.example.theexamapi.models.TDepartmentClassMappingEntity</class>
+        <class>com.example.theexamapi.models.TSemesterEntity</class>
+        <class>com.example.theexamapi.models.TDepartmentClassMapSemesterMappingEntity</class>
+        <class>com.example.theexamapi.models.TSubjectEntity</class>
         <!--        <class>com.example.theexamapi.models.TStreamEntity</class>-->
         <!--        <class>com.example.theexamapi.models.TCourseEntity</class>-->
         <!--        <class>com.example.theexamapi.models.TDepartmentEntity</class>-->
