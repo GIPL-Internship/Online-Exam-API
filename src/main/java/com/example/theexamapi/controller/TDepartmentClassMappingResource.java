@@ -1,5 +1,7 @@
 package com.example.theexamapi.controller;
 
+import com.example.theexamapi.entity.TCourse;
+import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.entity.TDepartmentClassMapping;
 import com.example.theexamapi.exception.ResourceNotFoundException;
 import com.example.theexamapi.service.TDepartmentClassMappingService;
@@ -39,6 +41,15 @@ public class TDepartmentClassMappingResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<TDepartmentClassMapping> getClassesList() {
         return tDepartmentClassMappingService.findAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("tclasses-by-department")
+    public List<TDepartmentClassMapping> getClassesByDepartment(@QueryParam("departmentUid") String departmentUid) {
+        TDepartment tDepartment = new TDepartment();
+        tDepartment.setUidDepartment(departmentUid);
+        return tDepartmentClassMappingService.findByDepartment(tDepartment);
     }
 
     @GET

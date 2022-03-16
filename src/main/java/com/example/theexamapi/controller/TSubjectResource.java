@@ -1,5 +1,8 @@
 package com.example.theexamapi.controller;
 
+import com.example.theexamapi.entity.TCourse;
+import com.example.theexamapi.entity.TDepartmentClassMapSemesterMapping;
+import com.example.theexamapi.entity.TStream;
 import com.example.theexamapi.entity.TSubject;
 import com.example.theexamapi.exception.ResourceNotFoundException;
 import com.example.theexamapi.service.TSubjectService;
@@ -39,6 +42,15 @@ public class TSubjectResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<TSubject> getSubjectsList() {
         return subjectService.findAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("tsubjects-by-semester")
+    public List<TSubject> getCoursesByStream(@QueryParam("semesterUid") String semesterUid) {
+        TDepartmentClassMapSemesterMapping tDepartmentClassMapSemesterMapping = new TDepartmentClassMapSemesterMapping();
+        tDepartmentClassMapSemesterMapping.setUidDepartmentClassMapSemesterMapping(semesterUid);
+        return subjectService.findBySemester(tDepartmentClassMapSemesterMapping);
     }
 
     @GET

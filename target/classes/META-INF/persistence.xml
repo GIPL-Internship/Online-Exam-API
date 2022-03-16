@@ -17,6 +17,10 @@
         <class>com.example.theexamapi.models.TSemesterEntity</class>
         <class>com.example.theexamapi.models.TDepartmentClassMapSemesterMappingEntity</class>
         <class>com.example.theexamapi.models.TSubjectEntity</class>
+        <class>com.example.theexamapi.models.TExamEntity</class>
+        <class>com.example.theexamapi.models.TQuestionEntity</class>
+        <class>com.example.theexamapi.models.TMcqOptionEntity</class>
+        <class>com.example.theexamapi.models.TExamQuestionMappingEntity</class>
         <!--        <class>com.example.theexamapi.models.TStreamEntity</class>-->
         <!--        <class>com.example.theexamapi.models.TCourseEntity</class>-->
         <!--        <class>com.example.theexamapi.models.TDepartmentEntity</class>-->
@@ -31,6 +35,7 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/exam_api_db"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <!--                        <property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.c3p0.min_size" value="10"/>
         </properties>
     </persistence-unit>
 </persistence>

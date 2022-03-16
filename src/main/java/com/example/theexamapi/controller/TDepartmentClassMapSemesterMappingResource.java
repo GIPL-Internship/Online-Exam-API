@@ -1,6 +1,8 @@
 package com.example.theexamapi.controller;
 
+import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.entity.TDepartmentClassMapSemesterMapping;
+import com.example.theexamapi.entity.TDepartmentClassMapping;
 import com.example.theexamapi.exception.ResourceNotFoundException;
 import com.example.theexamapi.service.TDepartmentClassMapSemesterMappingService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +41,15 @@ public class TDepartmentClassMapSemesterMappingResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<TDepartmentClassMapSemesterMapping> getDepartmentClassMapSemesterMappingsList() {
         return tDepartmentClassMapSemesterMappingService.findAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("tsemesters-by-class")
+    public List<TDepartmentClassMapSemesterMapping> getSemestersByClass(@QueryParam("departmentClassMapUid") String departmentClassMapUid) {
+        TDepartmentClassMapping tDepartmentClassMapping = new TDepartmentClassMapping();
+        tDepartmentClassMapping.setUidDepartmentClassMapping(departmentClassMapUid);
+        return tDepartmentClassMapSemesterMappingService.findByClass(tDepartmentClassMapping);
     }
 
     @GET

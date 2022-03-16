@@ -1,6 +1,7 @@
 package com.example.theexamapi.service.impl;
 
 import com.example.theexamapi.entity.TCourseEntity;
+import com.example.theexamapi.entity.TStream;
 import com.example.theexamapi.repo.CourseRepository;
 import com.example.theexamapi.service.CourseService;
 
@@ -36,6 +37,8 @@ public class CourseServiceImpl implements CourseService {
     public List<TCourseEntity> findAll() {
         return courseRepository.findAll();
     }
+
+
 
     @Override
     public TCourseEntity update(TCourseEntity tCourse) {

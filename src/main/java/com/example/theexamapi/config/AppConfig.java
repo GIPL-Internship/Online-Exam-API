@@ -2,6 +2,7 @@ package com.example.theexamapi.config;
 
 import com.example.theexamapi.controller.*;
 import com.example.theexamapi.cors.CORSFilter;
+import com.example.theexamapi.entity.TQuestion;
 import com.example.theexamapi.repo.ClassRepository;
 import com.example.theexamapi.repo.CourseRepository;
 import com.example.theexamapi.repo.DepartmentRepository;
@@ -124,6 +125,38 @@ public class AppConfig extends ResourceConfig {
             protected void configure() {
                 bind(TSubjectServiceImpl.class).to(TSubjectService.class);
                 bind(TSubjectRepository.class).to(TSubjectRepository.class);
+            }
+        });
+        register(TExamResource.class);
+        register(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bind(TExamServiceImpl.class).to(TExamService.class);
+                bind(TExamRepository.class).to(TExamRepository.class);
+            }
+        });
+        register(TQuestionResource.class);
+        register(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bind(TQuestionServiceImpl.class).to(TQuestionService.class);
+                bind(TQuestionRepository.class).to(TQuestionRepository.class);
+            }
+        });
+        register(TMcqOptionResource.class);
+        register(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bind(TMcqOptionServiceImpl.class).to(TMcqOptionService.class);
+                bind(TMcqOptionRepository.class).to(TMcqOptionRepository.class);
+            }
+        });
+        register(TExamQuestionMappingResource.class);
+        register(new AbstractBinder() {
+            @Override
+            protected void configure() {
+                bind(TExamQuestionMappingServiceImpl.class).to(TExamQuestionMappingService.class);
+                bind(TExamQuestionMappingRepository.class).to(TExamQuestionMappingRepository.class);
             }
         });
     }

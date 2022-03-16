@@ -1,6 +1,7 @@
 package com.example.theexamapi.service.impl;
 
 
+import com.example.theexamapi.entity.TCourse;
 import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.repositories.TDepartmentRepository;
 import com.example.theexamapi.service.TDepartmentService;
@@ -36,6 +37,11 @@ public class TDepartmentServiceImpl implements TDepartmentService {
     @Override
     public List<TDepartment> findAll() {
         return departmentRepository.findAll();
+    }
+
+    @Override
+    public List<TDepartment> findByCourse(TCourse tCourse) {
+        return departmentRepository.findByCourse(tCourse);
     }
 
     @Override

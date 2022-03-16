@@ -1,6 +1,7 @@
 package com.example.theexamapi.service.impl;
 
 
+import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.entity.TDepartmentClassMapping;
 import com.example.theexamapi.repositories.TDepartmentClassMappingRepository;
 import com.example.theexamapi.service.TDepartmentClassMappingService;
@@ -36,6 +37,11 @@ public class TDepartmentClassMappingServiceImpl implements TDepartmentClassMappi
     @Override
     public List<TDepartmentClassMapping> findAll() {
         return tDepartmentClassMappingRepository.findAll();
+    }
+
+    @Override
+    public List<TDepartmentClassMapping> findByDepartment(TDepartment department) {
+        return tDepartmentClassMappingRepository.findByDepartment(department);
     }
 
     @Override

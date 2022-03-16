@@ -1,6 +1,7 @@
 package com.example.theexamapi.repositories;
 
 
+import com.example.theexamapi.entity.TCourse;
 import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.utilsResources;
 
@@ -30,7 +31,7 @@ public class TDepartmentRepository {
     public Optional<TDepartment> findById(String uid) {
         em.getTransaction().begin();
 //        TDepartment tDepartment = em.find(TDepartment.class, uid);
-        TDepartment tDepartment = em.createQuery("from TDepartment where uidDepartment = :uid and jstatus=1", TDepartment.class).setParameter("uid",uid).getSingleResult();
+        TDepartment tDepartment = em.createQuery("from TDepartment where uidDepartment = :uid and jstatus=1", TDepartment.class).setParameter("uid", uid).getSingleResult();
         em.getTransaction().commit();
         return tDepartment != null ? Optional.of(tDepartment) : Optional.empty();
     }
@@ -39,6 +40,13 @@ public class TDepartmentRepository {
     @SuppressWarnings("unchecked")
     public List<TDepartment> findAll() {
         return em.createQuery("from TDepartment").getResultList();
+    }
+
+    public List<TDepartment> findByCourse(TCourse tCourse) {
+        em.getTransaction().begin();
+        List<TDepartment> tDepartmentList = em.createQuery("from TDepartment where uidCourseFk = :tCourse and jstatus=1", TDepartment.class).setParameter("tCourse", tCourse).getResultList();
+        em.getTransaction().commit();
+        return tDepartmentList;
     }
 
     public TDepartment update(TDepartment tDepartment) {

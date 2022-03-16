@@ -1,6 +1,7 @@
 package com.example.theexamapi.service;
 
 
+import com.example.theexamapi.entity.TDepartmentClassMapSemesterMapping;
 import com.example.theexamapi.entity.TSubject;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface TSubjectService {
 
 
     List<TSubject> findAll();
+
+    List<TSubject> findBySemester(TDepartmentClassMapSemesterMapping tDepartmentClassMapSemesterMapping);
 }

@@ -2,6 +2,7 @@ package com.example.theexamapi.repositories;
 
 
 import com.example.theexamapi.entity.TCourse;
+import com.example.theexamapi.entity.TStream;
 import com.example.theexamapi.utilsResources;
 
 import javax.persistence.EntityManager;
@@ -41,6 +42,13 @@ public class TCourseRepository {
         return em.createQuery("from TCourse").getResultList();
     }
 
+
+    public List<TCourse> findByStream(TStream tStream) {
+        em.getTransaction().begin();
+        List<TCourse> tCourses = em.createQuery("from TCourse where uidStreamFk = :tStream and jstatus=1", TCourse.class).setParameter("tStream",tStream).getResultList();
+        em.getTransaction().commit();
+        return tCourses;
+    }
     public TCourse update(TCourse tCourse) {
         em.getTransaction().begin();
         tCourse = em.merge(tCourse);

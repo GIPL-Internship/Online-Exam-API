@@ -2,6 +2,7 @@ package com.example.theexamapi.controller;
 
 
 import com.example.theexamapi.entity.TCourse;
+import com.example.theexamapi.entity.TStream;
 import com.example.theexamapi.exception.ResourceNotFoundException;
 import com.example.theexamapi.service.TCourseService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,15 @@ public class TCourseResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<TCourse> getCoursesList() {
         return courseService.findAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("tcourses-by-stream")
+    public List<TCourse> getCoursesByStream(@QueryParam("streamUid") String streamUid) {
+        TStream tStream = new TStream();
+        tStream.setUidStream(streamUid);
+        return courseService.findByStream(tStream);
     }
 
     @GET

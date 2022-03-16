@@ -1,6 +1,9 @@
 package com.example.theexamapi.repositories;
 
 
+import com.example.theexamapi.entity.TCourse;
+import com.example.theexamapi.entity.TDepartmentClassMapSemesterMapping;
+import com.example.theexamapi.entity.TStream;
 import com.example.theexamapi.entity.TSubject;
 import com.example.theexamapi.utilsResources;
 
@@ -39,6 +42,13 @@ public class TSubjectRepository {
     @SuppressWarnings("unchecked")
     public List<TSubject> findAll() {
         return em.createQuery("from TSubject").getResultList();
+    }
+
+    public List<TSubject> findBySemester(TDepartmentClassMapSemesterMapping tDepartmentClassMapSemesterMapping) {
+        em.getTransaction().begin();
+        List<TSubject> tSubjects = em.createQuery("from TSubject where uidDepartmentClassSemesterMapFK = :tDepartmentClassMapSemesterMapping and jstatus=1", TSubject.class).setParameter("tDepartmentClassMapSemesterMapping",tDepartmentClassMapSemesterMapping).getResultList();
+        em.getTransaction().commit();
+        return tSubjects;
     }
 
     public TSubject update(TSubject tSubject) {

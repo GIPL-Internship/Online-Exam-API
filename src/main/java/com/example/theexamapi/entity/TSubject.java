@@ -20,7 +20,7 @@ public class TSubject {
     @OneToOne
     @JoinColumn(name = "uid_department_class_semester_map", referencedColumnName = "uid_department_class_map_semester_mapping")
 //    private TDepartmentClassSemesterMap tDepartmentClassSemesterMap;
-    private TDepartmentClassMapSemesterMapping uidDepartmentClassSemesterMap;
+    private TDepartmentClassMapSemesterMapping uidDepartmentClassSemesterMapFK;
     @Basic
     @Column(name = "stitle")
     private String stitle;
@@ -60,11 +60,11 @@ public class TSubject {
     }
 
     public TDepartmentClassMapSemesterMapping getUidDepartmentClassSemesterMap() {
-        return uidDepartmentClassSemesterMap;
+        return uidDepartmentClassSemesterMapFK;
     }
 
     public void setUidDepartmentClassSemesterMap(TDepartmentClassMapSemesterMapping uidDepartmentClassSemesterMap) {
-        this.uidDepartmentClassSemesterMap = uidDepartmentClassSemesterMap;
+        this.uidDepartmentClassSemesterMapFK = uidDepartmentClassSemesterMap;
     }
 
     public String getStitle() {
@@ -128,11 +128,11 @@ public class TSubject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TSubject that = (TSubject) o;
-        return jsubjectId == that.jsubjectId && jstatus == that.jstatus && Objects.equals(uidSubject, that.uidSubject) && Objects.equals(uidDepartmentClassSemesterMap, that.uidDepartmentClassSemesterMap) && Objects.equals(stitle, that.stitle) && Objects.equals(sdetails, that.sdetails) && Objects.equals(dtcreatedAt, that.dtcreatedAt) && Objects.equals(uidCreatedByFk, that.uidCreatedByFk) && Objects.equals(uidUpdatedByFk, that.uidUpdatedByFk) && Objects.equals(uidPrevious, that.uidPrevious);
+        return jsubjectId == that.jsubjectId && jstatus == that.jstatus && Objects.equals(uidSubject, that.uidSubject) && Objects.equals(uidDepartmentClassSemesterMapFK, that.uidDepartmentClassSemesterMapFK) && Objects.equals(stitle, that.stitle) && Objects.equals(sdetails, that.sdetails) && Objects.equals(dtcreatedAt, that.dtcreatedAt) && Objects.equals(uidCreatedByFk, that.uidCreatedByFk) && Objects.equals(uidUpdatedByFk, that.uidUpdatedByFk) && Objects.equals(uidPrevious, that.uidPrevious);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jsubjectId, uidSubject, uidDepartmentClassSemesterMap, stitle, sdetails, jstatus, dtcreatedAt, uidCreatedByFk, uidUpdatedByFk, uidPrevious);
+        return Objects.hash(jsubjectId, uidSubject, uidDepartmentClassSemesterMapFK, stitle, sdetails, jstatus, dtcreatedAt, uidCreatedByFk, uidUpdatedByFk, uidPrevious);
     }
 }

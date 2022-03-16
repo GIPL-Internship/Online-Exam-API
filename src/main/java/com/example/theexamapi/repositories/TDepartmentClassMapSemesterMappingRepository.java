@@ -1,7 +1,9 @@
 package com.example.theexamapi.repositories;
 
 
+import com.example.theexamapi.entity.TDepartment;
 import com.example.theexamapi.entity.TDepartmentClassMapSemesterMapping;
+import com.example.theexamapi.entity.TDepartmentClassMapping;
 import com.example.theexamapi.utilsResources;
 
 import javax.persistence.EntityManager;
@@ -39,6 +41,13 @@ public class TDepartmentClassMapSemesterMappingRepository {
     @SuppressWarnings("unchecked")
     public List<TDepartmentClassMapSemesterMapping> findAll() {
         return em.createQuery("from TDepartmentClassMapSemesterMapping").getResultList();
+    }
+
+    public List<TDepartmentClassMapSemesterMapping> findByClass(TDepartmentClassMapping tDepartmentClassMapping) {
+        em.getTransaction().begin();
+        List<TDepartmentClassMapSemesterMapping> tDepartmentClassMapSemesterMappings = em.createQuery("from TDepartmentClassMapSemesterMapping where uidDepartmentClassMappingFk = :tDepartmentClassMapping and jstatus=1", TDepartmentClassMapSemesterMapping.class).setParameter("tDepartmentClassMapping", tDepartmentClassMapping).getResultList();
+        em.getTransaction().commit();
+        return tDepartmentClassMapSemesterMappings;
     }
 
     public TDepartmentClassMapSemesterMapping update(TDepartmentClassMapSemesterMapping tDepartmentClassMapSemesterMapping) {
